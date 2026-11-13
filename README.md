@@ -48,18 +48,33 @@ Three tests run entirely in-process (no server needed):
 
 ## Simulating API modes
 
-Set the environment variable before starting the dev server:
+You can simulate the different API states using the `PRODUCT_API_MODE` environment variable as specified:
 
+### Option 1: Inline command (macOS / Linux)
 ```bash
 # Normal (default)
 npm run dev
 
-# Slow — 2 s delay
+# Slow — 2s delay
 PRODUCT_API_MODE=slow npm run dev
 
 # Error — HTTP 500
 PRODUCT_API_MODE=error npm run dev
 ```
+
+### Option 2: Using `.env.local` (cross-platform / Windows friendly)
+Create a `.env.local` file in the root directory:
+```bash
+PRODUCT_API_MODE=error
+# or
+PRODUCT_API_MODE=slow
+```
+Then start the server with `npm run dev`.
+
+### Option 3: Direct API URL testing
+You can also test the endpoint directly in your browser or with `curl` using the query parameter override:
+- `http://localhost:3000/api/product?mode=slow`
+- `http://localhost:3000/api/product?mode=error`
 
 ---
 

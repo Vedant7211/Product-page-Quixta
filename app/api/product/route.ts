@@ -25,7 +25,6 @@ const product = {
 };
 
 export async function GET(request: Request) {
-  // Query param takes precedence over env var so the dev toolbar can override
   const { searchParams } = new URL(request.url);
   const mode = searchParams.get("mode") ?? process.env.PRODUCT_API_MODE;
 
